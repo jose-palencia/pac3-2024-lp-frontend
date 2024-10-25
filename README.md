@@ -12,13 +12,13 @@
 
 ### Backend
 
-- [ ] Agregar campo de resumen de post.
+- [x] Agregar campo de resumen de post.
 - [ ] Crear endpoint para obtener el top 3 de categorías populares.
 - [ ] Crear endpoint para visualizar autores con su avatar o foto de perfil. 
 
 ### Frontend
 
-- [ ] Trabajar el skeleton para que tome el numero de elementos desde el backend
+- [x] Trabajar el skeleton para que tome el numero de elementos desde el backend
 - [x] Agregar router de security.
 - [ ] Agregar una pagina para iniciar sesión.
 - [ ] Agregar en el nav un item para iniciar sesión o cerrar sesión.

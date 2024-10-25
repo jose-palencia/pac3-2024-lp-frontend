@@ -45,10 +45,16 @@ export const Nav = () => {
             Blog
           </Link>
           <Link
-            href="/home"
+            to="/home"
             className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0"
           >
             Sobre nosotros
+          </Link>
+          <Link
+            to="/security/login"
+            className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0"
+          >
+            Iniciar Sesión
           </Link>
         </div>
       </div>
