@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getPostsList } from "../../../shared/actions/posts/posts";
+import { getPostsList } from "../../../shared/actions/posts/posts.action";
 
 export const usePosts = () => {
   const [posts, setPosts] = useState({});
