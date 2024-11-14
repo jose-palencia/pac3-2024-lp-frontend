@@ -7,9 +7,9 @@ axios.defaults.baseURL = API_URL;
 const setAuthToken = () => {
   const auth = getAuth();
   if (auth) {
-    blogApi.defaults.headers.common["Authorization"] = `Bearer ${auth.token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${auth.token}`;
   } else {
-    delete blogApi.defaults.headers.common["Authorization"];
+    delete axios.defaults.headers.common["Authorization"];
   }
 };
 
@@ -34,38 +34,59 @@ const blogApi = axios.create({
   },
 });
 
-blogApi.interceptors.response.use(
-  (config) => config,
-  (error) => {
-    const auth = getAuth();
+// blogApi.interceptors.response.use(
+//   (config) => config,
+//   async (error) => {
+//     const auth = getAuth();
 
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      auth &&
-      !refreshingTokenPromise
-    ) {
-      refreshingTokenPromise = blogApi.post(
-        "auth/refresh-token",
-        {
-          token: auth.token,
-          refreshToken: auth.refreshToken,
-        },
-        {
-          withCredentials: true,
-        }
-      ).then((response) => {
-        const setSession = useAuthStore.getState().setSession;
-        const user = {
-          email: response.data.data.email,
-          fullName: response.data.data.fullName,
-          tokenExpiration : response.data.data.tokenExpiration
-        };
-        // TODO: Sigue
-      });
-    }
-  }
-);
+//     if (
+//       error.response &&
+//       error.response.status === 401 &&
+//       auth &&
+//       !refreshingTokenPromise
+//     ) {
+//       refreshingTokenPromise = axios.post(
+//         "auth/refresh-token",
+//         {
+//           token: auth.token,
+//           refreshToken: auth.refreshToken,
+//         },
+//         {
+//           withCredentials: true,
+//         }
+//       ).then((response) => {
+//         const setSession = useAuthStore.getState().setSession;
+//         const user = {
+//           email: response.data.data.email,
+//           fullName: response.data.data.fullName,
+//           tokenExpiration : response.data.data.tokenExpiration
+//         };
+        
+//         setSession(user, response.data.data.token, response.data.data.refreshToken);
+//         setAuthToken();
+//         refreshingTokenPromise = null;
+//         return response.data.data.token;
+//       }).catch((error) => {
+//         console.log('Error refrescando el token');
+//         const logout = useAuthStore().getState().logout;
+//         logout();
+//         refreshingTokenPromise = null;
+
+//         window.location.replace = '/home';
+
+//         return Promise.reject(error);
+//       });
+
+//       if(refreshingTokenPromise) {
+//         await refreshingTokenPromise;
+//         error.config.headers["Authorization"]  = `Bearer ${getAuth().token}`;
+//         return blogApi(error.config);        
+//       }
+
+//       return Promise.reject(error);
+//     }
+//   }
+// );
 
 blogApi.interceptors.request.use(
   (config) => {
