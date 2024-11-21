@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../security/store";
+import { ProtectedComponent } from "../../../shared/components";
+import { rolesListConstant } from "../../../shared/constants";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,11 +64,23 @@ export const Nav = () => {
           >
             Sobre nosotros
           </Link>
+
+          <ProtectedComponent requiredRoles={[rolesListConstant.ADMIN, rolesListConstant.AUTHOR]}>
+            <Link
+              to="/administration/dashboard"
+              className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0"
+            >
+              Administración
+            </Link>
+          </ProtectedComponent>
+
           {isAuthenticated ? (
-            <button 
+            <button
               onClick={handleLogout}
               className="my-1 text-white text-left hover:text-unah-yellow md:mx-4 md:my-0"
-            >Salir</button>
+            >
+              Salir
+            </button>
           ) : (
             <Link
               to="/security/login"

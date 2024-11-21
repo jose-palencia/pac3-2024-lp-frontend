@@ -1,10 +1,9 @@
-// import { blogApi } from '../../../config/api';
-
-import axios from "axios";
+// import axios from "axios";
+import { blogApi } from "../../../config/api/blogApi";
 
 export const loginAsync = async (form) => {
     try {
-        const { data } = await axios.post('/auth/login', form);
+        const { data } = await blogApi.post('/auth/login', form);
         
         return data;
     } catch (error) {

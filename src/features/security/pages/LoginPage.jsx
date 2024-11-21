@@ -13,6 +13,7 @@ export const LoginPage = () => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const login = useAuthStore((state) => state.login);
   const error = useAuthStore((state) => state.error);
+  const validateAuthentication = useAuthStore((state) => state.validateAuthentication);
   const message = useAuthStore((state) => state.message);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export const LoginPage = () => {
       // console.log(formValues);
       setLoading(true);
       await login(formValues);
+      validateAuthentication();
       setLoading(false);
     },
   });
