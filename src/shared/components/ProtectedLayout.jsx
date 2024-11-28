@@ -11,8 +11,8 @@ export const ProtectedLayout = () => {
   }
 
   return (
-    <>
+    <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-4 w-full">      
       <Outlet />
-    </>
+    </div>
   );
 };

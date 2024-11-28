@@ -1,4 +1,5 @@
 import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
   return (
@@ -40,35 +41,35 @@ export const Menu = () => {
 
           <hr className="border-gray-200 dark:border-gray-700 " />
 
-          <a
-            href="#"
+          <Link
+            to="/administration/categories"
             className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             Categorías
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/administration/tags"
             className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             Etiquetas
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/administration/posts"
             className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             Publicaciones
-          </a>
+          </Link>
 
           <hr className="border-gray-200 dark:border-gray-700 " />
 
-          <a
-            href="#"
+          <Link
+            to="/administration/users"
             className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             Usuarios
-          </a>
+          </Link>
 
           <hr className="border-gray-200 dark:border-gray-700 " />
 

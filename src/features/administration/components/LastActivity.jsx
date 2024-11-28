@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const LastActivity = () => {
+export const LastActivity = ({ posts = [], categories = [], tags = [] }) => {
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-4 ">
       <div className="w-full mx-auto">
@@ -23,64 +23,25 @@ export const LastActivity = () => {
             </div>
           </div>
 
-          <div className="block w-full overflow-x-auto">
+          <div className="block w-full overflow-hidden">
             <table className="items-center w-full border-collapse text-blueGray-700  ">
               <thead className="thead-light ">
                 <tr>
                   <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Titulo
                   </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Fecha
-                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    <Link to="/home" >Publicación 1</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                    1,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Publicación 2</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    5,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Publicación 3</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    4,807
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Publicación 4</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    3,678
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Publicación 5</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    2,645
-                  </td>
-                 
-                </tr>
+                {posts.map((post) => (
+                  <tr key={post.id}>
+                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                      <Link
+                       className="hover:text-unah-blueLight inline-block max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap"
+                       to="/home">{post.title}</Link>
+                    </th>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -114,57 +75,16 @@ export const LastActivity = () => {
                   <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Titulo
                   </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Fecha
-                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    <Link to="/home" >Categoría 1</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                    1,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Categoría 2</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    5,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Categoría 3</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    4,807
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Categoría 4</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    3,678
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Categoría 5</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    2,645
-                  </td>
-                 
-                </tr>
+                {categories.map((category) => (
+                  <tr key={category.id}>
+                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                      <Link to="/home">{category.name}</Link>
+                    </th>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -198,63 +118,21 @@ export const LastActivity = () => {
                   <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Titulo
                   </th>
-                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Fecha
-                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    <Link to="/home" >Etiqueta 1</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                    1,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Etiqueta 2</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    5,480
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Etiqueta 3</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    4,807
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Etiqueta 4</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    3,678
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link to="/home" >Etiqueta 5</Link> 
-                  </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    2,645
-                  </td>
-                 
-                </tr>
+                {tags.map((tag) => (
+                  <tr key={tag.id}>
+                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                      <Link to="/home">{tag.name}</Link>
+                    </th>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
     </div>
   );
 };

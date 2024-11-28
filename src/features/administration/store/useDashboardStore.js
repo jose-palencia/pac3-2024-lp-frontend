@@ -2,7 +2,15 @@ import { create } from "zustand";
 import { dashboardAsync } from "../../../shared/actions/dashboard";
 
 export const useDashboardStore = create((set) => ({
-    dashboardData: null,
+    dashboardData: {
+        usersCount: 0,
+        tagsCount: 0,
+        commentsCount: 0,
+        postsCount: 0,
+        categories: [],
+        posts: [],
+        tags: []
+    },
     loadData: async () => {
         const result = await dashboardAsync();
 

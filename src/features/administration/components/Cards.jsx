@@ -3,7 +3,12 @@ import { GrNotes } from "react-icons/gr";
 import { HiOutlineUsers } from "react-icons/hi";
 import { IoMdPricetags } from "react-icons/io";
 
-export const Cards = () => {
+export const Cards = ({
+  usersCount = 0,
+  tagsCount = 0,
+  postsCount = 0,
+  commentsCount = 0,
+}) => {
   return (
     <div className="flex items-center text-gray-800">
       <div className="p-4 w-full">
@@ -15,7 +20,7 @@ export const Cards = () => {
               </div>
               <div className="flex flex-col flex-grow ml-4">
                 <div className="text-sm text-gray-500">Usuarios</div>
-                <div className="font-bold text-lg">1259</div>
+                <div className="font-bold text-lg">{usersCount}</div>
               </div>
             </div>
           </div>
@@ -26,7 +31,7 @@ export const Cards = () => {
               </div>
               <div className="flex flex-col flex-grow ml-4">
                 <div className="text-sm text-gray-500">Etiquetas</div>
-                <div className="font-bold text-lg">230</div>
+                <div className="font-bold text-lg">{tagsCount}</div>
               </div>
             </div>
           </div>
@@ -37,7 +42,7 @@ export const Cards = () => {
               </div>
               <div className="flex flex-col flex-grow ml-4">
                 <div className="text-sm text-gray-500">Publicaciones</div>
-                <div className="font-bold text-lg">190</div>
+                <div className="font-bold text-lg">{postsCount}</div>
               </div>
             </div>
           </div>
@@ -48,7 +53,7 @@ export const Cards = () => {
               </div>
               <div className="flex flex-col flex-grow ml-4">
                 <div className="text-sm text-gray-500">Comentarios</div>
-                <div className="font-bold text-lg">320</div>
+                <div className="font-bold text-lg">{commentsCount}</div>
               </div>
             </div>
           </div>
