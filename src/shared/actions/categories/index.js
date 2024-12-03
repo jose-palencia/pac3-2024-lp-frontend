@@ -14,3 +14,16 @@ export const getCategoriesPaginationAsync = async (
     return error?.response.data;
   }
 };
+
+
+export const getCategoriesByIdAsync = async (id) => {
+  try {
+    const { data } = await blogApi.get(
+      `/categories/${id}`
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+    return error?.response.data;
+  }
+};

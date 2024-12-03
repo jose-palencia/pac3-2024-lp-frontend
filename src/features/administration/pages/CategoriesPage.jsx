@@ -2,8 +2,25 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { LinkCustom } from "../components";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useCategoriesStore } from "../store/useCategoriesStore";
+import { useEffect, useState } from "react";
+import { Loading } from "../../../shared/components/Loading";
 
 export const CategoriesPage = () => {
+
+  const categoriesData = useCategoriesStore((state) => state.categoriesData);
+  const loadData = useCategoriesStore((state) => state.loadData);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if(isLoading) {
+      loadData();
+      setIsLoading(false);
+    }
+  }, [])
+
+  if (isLoading) return <Loading/> 
+
   return (
     <>
       <div className="sm:flex sm:items-center sm:justify-between">
@@ -43,14 +60,15 @@ export const CategoriesPage = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                  <tr>
+                  {categoriesData.items.map(({id, name, description}) => (
+                  <tr key={id}>
                     <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                       <div>
                         <h2 className="font-medium text-gray-800 dark:text-white ">
-                          IA
+                          {name}
                         </h2>
                         <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                          Descripción
+                          {description}
                         </p>
                       </div>
                     </td>
@@ -58,17 +76,18 @@ export const CategoriesPage = () => {
                     <td className="px-4 py-4 flex gap-2 text-sm whitespace-nowrap">
                       <LinkCustom
                         label="Editar"
-                        to={`edit/${"2495729c-3405-4dd9-b160-2f1f6cfef1f3"}`}
+                        to={`edit/${id}`}
                         icon={<FaEdit />}
                       />
 
                       <LinkCustom
                         label="Borrar"
-                        to={`delete/${"2495729c-3405-4dd9-b160-2f1f6cfef1f3"}`}
+                        to={`delete/${id}`}
                         icon={<RiDeleteBin5Line />}
                       />
                     </td>
                   </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
